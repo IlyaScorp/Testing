@@ -1,5 +1,6 @@
-package com.spbstu;
+package hm1;
 
+import com.spbstu.EpamTestSite;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
