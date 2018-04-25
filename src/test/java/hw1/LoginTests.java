@@ -1,4 +1,4 @@
-package hm1;
+package hw1;
 
 import com.spbstu.EpamTestSite;
 import org.openqa.selenium.WebDriver;
