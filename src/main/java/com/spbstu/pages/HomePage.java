@@ -32,17 +32,19 @@ public class HomePage {
     //    @FindBy(css = ".icon-practise")
     WebElement icon;
     static String[] icons = {"practise", "custom", "multi", "base"};
-    static int iconNumber = 0;
+    private static int iconNumber = 0;
 
     @FindBy(css = "div.col-sm-3")
-    List<WebElement> textIcon;
-    int textNumber = 0;
+    private List<WebElement> textIcon;
+    private int textNumber = 0;
 
     @FindBy(css = "h3")
+    private
     WebElement mainTitle;
 
     @FindBy(css = ".main-txt")
-    private WebElement secondTitle;
+    private
+    WebElement secondTitle;
 
 
     private WebDriver driver;

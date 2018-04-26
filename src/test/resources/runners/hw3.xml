@@ -3,7 +3,7 @@
 <suite name="SPBSTU ts" verbose="1">
     <test name="Se">
         <packages>
-            <package name="com.spbstu.hw1"/>
+            <package name="com.spbstu.hw3"/>
         </packages>
     </test>
 </suite>

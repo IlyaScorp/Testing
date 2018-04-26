@@ -1,4 +1,4 @@
-package hw1;
+package com.spbstu.hw3;
 
 import com.spbstu.EpamTestSite;
 import org.openqa.selenium.WebDriver;
@@ -9,12 +9,12 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
 /**
- * Created by dmitry on 14.03.2018.
+ * Ex2-3. PageObject.
  */
 public class LoginTests {
 
-    WebDriver driver;
-    String[] TEXT = {"To include good practices\n" +
+    private WebDriver driver;
+    final String[] TEXT = {"To include good practices\n" +
             "and ideas from successful\n" +
             "EPAM projec",
             "To be flexible and\n" +
@@ -24,8 +24,8 @@ public class LoginTests {
             "(about 20 internal and\n" +
             "some external projects),\n" +
             "wish to get more…" };
-    String MAINTITLE = "EPAM FRAMEWORK WISHES…";
-    String SECONDTITLE = "LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISICING ELIT, SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA ALIQUA. UT ENIM AD MINIM VENIAM, QUIS NOSTRUD EXERCITATION ULLAMCO LABORIS NISI UT ALIQUIP EX EA COMMODO CONSEQUAT DUIS AUTE IRURE DOLOR IN REPREHENDERIT IN VOLUPTATE VELIT ESSE CILLUM DOLORE EU FUGIAT NULLA PARIATUR.";
+    final String MAINTITLE = "EPAM FRAMEWORK WISHES…";
+    final String SECONDTITLE = "LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISICING ELIT, SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA ALIQUA. UT ENIM AD MINIM VENIAM, QUIS NOSTRUD EXERCITATION ULLAMCO LABORIS NISI UT ALIQUIP EX EA COMMODO CONSEQUAT DUIS AUTE IRURE DOLOR IN REPREHENDERIT IN VOLUPTATE VELIT ESSE CILLUM DOLORE EU FUGIAT NULLA PARIATUR.";
 
     @BeforeSuite
     public void beforeSuite() {
