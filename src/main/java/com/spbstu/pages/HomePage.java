@@ -10,9 +10,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 
-/**
- * Created by dmitry on 14.03.2018.
- */
+
 public class HomePage {
     @FindBy(css = ".profile-photo")
     WebElement profilePhoto;

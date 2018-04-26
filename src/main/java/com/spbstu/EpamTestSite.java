@@ -5,9 +5,7 @@ import com.spbstu.pages.HomePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
-/**
- * Created by dmitry on 14.03.2018.
- */
+
 public class EpamTestSite {
     public static ContactFormPage contactFormPage;
     public static HomePage homePage;
