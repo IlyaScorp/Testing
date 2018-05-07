@@ -11,6 +11,8 @@ import org.testng.annotations.Test;
 /**
  * Ex2-3. PageObject.
  */
+
+// TODO this code does not match with code conventions !
 public class LoginTests {
 
     private WebDriver driver;
@@ -46,6 +48,7 @@ public class LoginTests {
         for (int i = 0; i < 4; i++) {
             Assert.assertTrue(EpamTestSite.homePage.getIcon());
         }
+
         WebElement tmp;
         for (int i = 0; i < 4; i++) {
             tmp = EpamTestSite.homePage.getIconElement();
