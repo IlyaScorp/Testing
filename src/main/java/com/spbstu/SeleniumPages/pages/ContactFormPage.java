@@ -1,4 +1,4 @@
-package com.spbstu.pages;
+package com.spbstu.SeleniumPages.pages;
 
 
 public class ContactFormPage {

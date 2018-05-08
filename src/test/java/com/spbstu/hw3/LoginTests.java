@@ -1,6 +1,6 @@
 package com.spbstu.hw3;
 
-import com.spbstu.EpamTestSite;
+import com.spbstu.SeleniumPages.EpamTestSite;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -11,9 +11,12 @@ import org.testng.annotations.Test;
 /**
  * Ex2-3. PageObject.
  */
+// TODO this code does not match with code conventions !
+//    TODO я не въезжаю. У вас ведь все так-же.
+
 public class LoginTests {
 
-    private WebDriver driver;
+
     final String[] TEXT = {"To include good practices\n" +
             "and ideas from successful\n" +
             "EPAM projec",
@@ -26,6 +29,7 @@ public class LoginTests {
             "wish to get more…" };
     final String MAINTITLE = "EPAM FRAMEWORK WISHES…";
     final String SECONDTITLE = "LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISICING ELIT, SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA ALIQUA. UT ENIM AD MINIM VENIAM, QUIS NOSTRUD EXERCITATION ULLAMCO LABORIS NISI UT ALIQUIP EX EA COMMODO CONSEQUAT DUIS AUTE IRURE DOLOR IN REPREHENDERIT IN VOLUPTATE VELIT ESSE CILLUM DOLORE EU FUGIAT NULLA PARIATUR.";
+    private WebDriver driver;
 
     @BeforeSuite
     public void beforeSuite() {
@@ -44,7 +48,7 @@ public class LoginTests {
         Assert.assertEquals(EpamTestSite.homePage.getTitle(),"Index Page");
 
         for (int i = 0; i < 4; i++) {
-            Assert.assertTrue(EpamTestSite.homePage.getIcon());
+            Assert.assertTrue(EpamTestSite.homePage.getIcon().isDisplayed());
         }
         WebElement tmp;
         for (int i = 0; i < 4; i++) {

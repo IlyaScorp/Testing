@@ -1,7 +1,10 @@
 package com.spbstu.hw4;
 
 
+import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
+import com.spbstu.selenidePages.EpamTestSiteSelenide;
+import com.spbstu.selenidePages.enums.USER_DATA;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -22,13 +25,20 @@ public class SelenideTest {
 
     @BeforeClass
     public void beforeClass(){
-
+        Configuration.browser = "chrome";
+        EpamTestSiteSelenide.init();
     }
 
 
     @Test
-    public void Test(){
+    public void Test() {
         Selenide.open("https://jdi-framework.github.io/tests/index.htm");
+        EpamTestSiteSelenide.homePage.login(USER_DATA.LOGIN.toString(),USER_DATA.PASSWORD.toString());
+        EpamTestSiteSelenide.homePage.checkUserLogIn(USER_DATA.USER_NAME.toString());
+        EpamTestSiteSelenide.homePage.pictureExist();
+        EpamTestSiteSelenide.homePage.textUnderPictureExist();
+        EpamTestSiteSelenide.homePage.mainTitleExist();
+        EpamTestSiteSelenide.homePage.seconsTitleExist();
     }
 
 

@@ -7,9 +7,12 @@ import org.openqa.selenium.support.FindBy;
 
 
 import static com.codeborne.selenide.Condition.exactText;
+import static com.codeborne.selenide.Condition.exist;
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$$;
 
 
-public class HomePage {
+public class HomePageSelenide {
     @FindBy(css = ".profile-photo")
     SelenideElement profilePhoto;
 
@@ -22,9 +25,9 @@ public class HomePage {
     @FindBy(css = "form .btn-login")
     SelenideElement submit;
 
-    public HomePage() {
+    public HomePageSelenide() {
         Selenide.page(this);
-    }
+    } // так, и зачем это здесь?
 
 
     public void open() {
@@ -42,14 +45,20 @@ public class HomePage {
         profilePhoto.shouldHave(exactText(userName));
      }
 
-
-    public void checkUserLogIn(User user) {
-        checkUserLogIn(user.getName());
+    public void pictureExist(){
+        $$(".icon-").stream().skip(2).forEachOrdered(a -> a.should(exist));
     }
 
-
-    public void login(User user) {
-        login(user.getLogin(), user.getPassword());
-
+    public void textUnderPictureExist(){
+        $$("div.col-sm-3").stream().forEachOrdered(a -> a.should(exist));
     }
+
+    public void mainTitleExist(){
+        $("h3").should(exist);
+    }
+
+    public void seconsTitleExist(){
+        $(".main-txt").should(exist);
+    }
+
 }

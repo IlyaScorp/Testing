@@ -1,19 +1,22 @@
-package com.spbstu.pages;
+package com.spbstu.SeleniumPages.pages;
+
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Objects;
 
+import java.util.List;
+
+// TODO code convention...imports... OH MY ... GOD, yes? It will definitely help me:)
+// TODO i've read code convention and haven't noticed any problems in my import expressions. What is wrong?
 
 public class HomePage {
+    
     @FindBy(css = ".profile-photo")
     WebElement profilePhoto;
+
 
     @FindBy(css = "#Login")
     WebElement loginField;
@@ -39,6 +42,7 @@ public class HomePage {
     @FindBy(css = "h3")
     private
     WebElement mainTitle;
+
 
     @FindBy(css = ".main-txt")
     private
@@ -71,23 +75,21 @@ public class HomePage {
         submit.click();
     }
 
-    public boolean getIcon() {
+    // TODO this is a bit strange logic, ywy dont you return List with WebElements ?
+   /*TODO I had to return only icon.
+    TODO чтобы вернуть List  я должен пройтись в цикле от 0 до 3 и добавить каждый WebElement в List
+    TODO а потом снова проходить цикл уже в test, где каждый элемент проверять на isDisplayed()
+    TODO Или лучше прйтись в цикле здесь, чтоб сформировать List. И потом в test чтоб проверить каждый элемент?
+   */
+    public WebElement getIcon() {
 
         icon = driver.findElement(By.cssSelector(String.format(".icon-%s",
                 icons[iconNumber == 4 ? iconNumber = 0 : iconNumber])));
         iconNumber++;
-        return icon.isDisplayed();
+        return icon;
+
     }
 
-//    public String getIconText() {
-//
-//        return getIconElement().getText();
-//    }
-//
-//    public boolean textIconIsDesplayed() {
-//
-//        return getIconElement().isDisplayed();
-//    }
 
     public WebElement getIconElement() {
         if (textNumber == 4) {
