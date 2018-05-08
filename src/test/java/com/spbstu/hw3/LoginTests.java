@@ -11,9 +11,14 @@ import org.testng.annotations.Test;
 /**
  * Ex2-3. PageObject.
  */
+<<<<<<< HEAD
 // TODO this code does not match with code conventions !
 //    TODO я не въезжаю. У вас ведь все так-же.
 
+=======
+
+// TODO this code does not match with code conventions !
+>>>>>>> 40ae8d8ea0b1c5fa70e11644f6c78cf07e44432c
 public class LoginTests {
 
 
@@ -50,6 +55,7 @@ public class LoginTests {
         for (int i = 0; i < 4; i++) {
             Assert.assertTrue(EpamTestSite.homePage.getIcon().isDisplayed());
         }
+
         WebElement tmp;
         for (int i = 0; i < 4; i++) {
             tmp = EpamTestSite.homePage.getIconElement();
