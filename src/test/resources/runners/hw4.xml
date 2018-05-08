@@ -1,0 +1,11 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="SPBSTU ts" verbose="1">
+    <test name="Se">
+        <packages>
+            <package name="com.spbstu.hw4"/>
+        </packages>
+    </test>
+</suite>
+
+

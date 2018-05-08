@@ -1,7 +1,7 @@
-package com.spbstu;
+package com.spbstu.SeleniumPages;
 
-import com.spbstu.pages.ContactFormPage;
-import com.spbstu.pages.HomePage;
+import com.spbstu.SeleniumPages.pages.ContactFormPage;
+import com.spbstu.SeleniumPages.pages.HomePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
