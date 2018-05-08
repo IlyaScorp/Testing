@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Objects;
 
 
+// TODO code convention...imports... OH MY
 public class HomePage {
     @FindBy(css = ".profile-photo")
     WebElement profilePhoto;
@@ -71,6 +72,7 @@ public class HomePage {
         submit.click();
     }
 
+    // TODO this is a bit strange logic, ywy dont you return List with WebElements ?
     public boolean getIcon() {
 
         icon = driver.findElement(By.cssSelector(String.format(".icon-%s",
