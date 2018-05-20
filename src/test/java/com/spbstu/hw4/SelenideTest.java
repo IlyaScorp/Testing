@@ -3,12 +3,10 @@ package com.spbstu.hw4;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
-import com.spbstu.SeleniumPages.EpamTestSite;
+import com.spbstu.enums.ELEMENTS_PAGE;
 import com.spbstu.enums.HOME_PAGE;
 import com.spbstu.enums.USER_DATA;
 import com.spbstu.selenidePages.EpamTestSiteSelenide;
-import com.spbstu.utils.TestConfig;
-import org.aeonbits.owner.ConfigFactory;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -16,24 +14,19 @@ import java.util.List;
 
 public class SelenideTest {
 
-    String[] TEXT;
-    private TestConfig cfg;
 
 
     @BeforeClass
     public void beforeClass() {
 
-        cfg = ConfigFactory.create(TestConfig.class);
-        TEXT = cfg.titles();
-        TEXT[3] = TEXT[3].concat(",\n").concat(TEXT[4]);
         Configuration.browser = "chrome";
         Configuration.startMaximized=true;
-        Configuration.headless = true;
+//        Configuration.headless = true;
         EpamTestSiteSelenide.init();
     }
 
 
-    @Test(enabled = false)
+    @Test(enabled = true)
     public void caseOne() {
         Selenide.open("https://jdi-framework.github.io/tests/index.htm");
         EpamTestSiteSelenide.homePage.login(USER_DATA.LOGIN.toString(), USER_DATA.PASSWORD.toString());
@@ -53,9 +46,9 @@ public class SelenideTest {
         * Что не так?
         * Начиная с isDropdownExist уже падает(не находит).
         * */
-        EpamTestSiteSelenide.elementsPage.isCheckboxesExist(HOME_PAGE.CHECK_BOXES.getListValue());
-        EpamTestSiteSelenide.elementsPage.isRadiosExist(HOME_PAGE.RADIOS.getListValue());
-        EpamTestSiteSelenide.elementsPage.isDropdownExist(HOME_PAGE.COLORS_DROPDOWN.getListValue());
+        EpamTestSiteSelenide.elementsPage.isCheckboxesExist((List<String>) ELEMENTS_PAGE.CHECK_BOXES.getValue());
+        EpamTestSiteSelenide.elementsPage.isRadiosExist((List<String>) ELEMENTS_PAGE.RADIOS.getValue());
+        EpamTestSiteSelenide.elementsPage.isDropdownExist((List<String>) ELEMENTS_PAGE.COLORS_DROPDOWN.getValue());
         EpamTestSiteSelenide.elementsPage.isButtonsAndSectionsExist();
         EpamTestSiteSelenide.elementsPage.switchConditions("Water");
         EpamTestSiteSelenide.elementsPage.switchConditions("Wind");
@@ -67,7 +60,7 @@ public class SelenideTest {
 
     }
 
-    @Test
+    @Test(enabled = false)
     public void caseTwo() {
         Selenide.open("https://jdi-framework.github.io/tests/index.htm");
         EpamTestSiteSelenide.homePage.login(USER_DATA.LOGIN.toString(), USER_DATA.PASSWORD.toString());

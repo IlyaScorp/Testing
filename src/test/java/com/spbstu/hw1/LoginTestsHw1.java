@@ -1,7 +1,6 @@
 package com.spbstu.hw1;
 
-import com.spbstu.utils.TestConfig;
-import org.aeonbits.owner.ConfigFactory;
+import com.spbstu.enums.HOME_PAGE;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -15,16 +14,12 @@ import java.util.List;
 public class LoginTestsHw1 {
 
 
-    String[] TEXT;
     private WebDriver driver;
     private WebElement element;
-    private TestConfig cfg;
+
 
     @BeforeSuite
     public void beforeSuite() {
-        cfg = ConfigFactory.create(TestConfig.class);
-        TEXT = cfg.titles();
-        TEXT[3] = TEXT[3].concat(",\n").concat(TEXT[4]);
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.navigate().to("https://jdi-framework.github.io/tests/index.htm");
@@ -46,7 +41,7 @@ public class LoginTestsHw1 {
         WebElement icon;
         for (int i = 0; i < 4; i++) {                                    // проверка иконок
             icon = driver.findElement(By.cssSelector(String.format(".icon-%s",
-                    cfg.icons()[i])));
+                    HOME_PAGE.ICONS.getArrValue()[i])));
             Assert.assertTrue(icon.isDisplayed());
         }
 
@@ -54,16 +49,16 @@ public class LoginTestsHw1 {
         textIcon = driver.findElements(By.cssSelector("div.col-sm-3")); // проверка текста под иконками
         for (int i = 0; i < 4; i++) {
             Assert.assertTrue(textIcon.get(i).isDisplayed());
-            Assert.assertEquals(TEXT[i], textIcon.get(i).getText());
+            Assert.assertEquals(HOME_PAGE.TEXT.getArrValue()[i], textIcon.get(i).getText());
         }
 
         element = driver.findElement(By.cssSelector("h3"));             // проверка заголовка
         Assert.assertTrue(element.isDisplayed());
-        Assert.assertEquals(element.getText(), cfg.mainTitle());
+        Assert.assertEquals(element.getText(), HOME_PAGE.MAIN_TITLE.getValue());
 
         element = driver.findElement(By.cssSelector(".main-txt"));      // проверка подзаголовка
         Assert.assertTrue(element.isDisplayed());
-        Assert.assertEquals(element.getText(), cfg.secondTitle());
+        Assert.assertEquals(element.getText(), HOME_PAGE.SECOND_TITLE.getValue());
 
         driver.close();
     }

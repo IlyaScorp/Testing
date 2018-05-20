@@ -9,7 +9,7 @@ public enum USER_DATA {
 
     private String value;
 
-    public String toString(){
+    public String toString() {
         return value;
     }
 
