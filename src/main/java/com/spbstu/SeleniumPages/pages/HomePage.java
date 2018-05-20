@@ -12,9 +12,11 @@ import java.util.List;
 // TODO code convention...imports... OH MY ... GOD, yes? It will definitely help me:)
 // TODO i've read code convention and haven't noticed any problems in my import expressions. What is wrong?
 
-// TODO code convention...imports... OH MY
+
 public class HomePage {
-    
+
+    private WebDriver driver;
+
     @FindBy(css = ".profile-photo")
     WebElement profilePhoto;
 
@@ -33,24 +35,21 @@ public class HomePage {
 
     //    @FindBy(css = ".icon-practise")
     WebElement icon;
-    static String[] icons = {"practise", "custom", "multi", "base"};
-    private static int iconNumber = 0;
+    String[] icons = {"practise", "custom", "multi", "base"};
+    int iconNumber = 0;
 
     @FindBy(css = "div.col-sm-3")
-    private List<WebElement> textIcon;
-    private int textNumber = 0;
+    List<WebElement> textIcon;
+    int textNumber = 0;
 
     @FindBy(css = "h3")
-    private
     WebElement mainTitle;
 
 
     @FindBy(css = ".main-txt")
-    private
     WebElement secondTitle;
 
 
-    private WebDriver driver;
 
 
     public HomePage(WebDriver driver) {
@@ -77,16 +76,16 @@ public class HomePage {
     }
 
     // TODO this is a bit strange logic, ywy dont you return List with WebElements ?
-<<<<<<< HEAD:src/main/java/com/spbstu/SeleniumPages/pages/HomePage.java
-   /*TODO I had to return only icon.
-    TODO чтобы вернуть List  я должен пройтись в цикле от 0 до 3 и добавить каждый WebElement в List
-    TODO а потом снова проходить цикл уже в test, где каждый элемент проверять на isDisplayed()
-    TODO Или лучше прйтись в цикле здесь, чтоб сформировать List. И потом в test чтоб проверить каждый элемент?
-   */
+
+    /*TODO I had to return only icon.
+     TODO чтобы вернуть List  я должен пройтись в цикле от 0 до 3 и добавить каждый WebElement в List
+     TODO а потом снова проходить цикл уже в test, где каждый элемент проверять на isDisplayed()
+     TODO Или лучше прйтись в цикле здесь, чтоб сформировать List. И потом в test чтоб проверить каждый элемент?
+    */
+
+
     public WebElement getIcon() {
-=======
-    public boolean getIcon() {
->>>>>>> 40ae8d8ea0b1c5fa70e11644f6c78cf07e44432c:src/main/java/com/spbstu/pages/HomePage.java
+
 
         icon = driver.findElement(By.cssSelector(String.format(".icon-%s",
                 icons[iconNumber == 4 ? iconNumber = 0 : iconNumber])));

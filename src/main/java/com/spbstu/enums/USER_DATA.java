@@ -1,4 +1,4 @@
-package com.spbstu.selenidePages.enums;
+package com.spbstu.enums;
 
 
 import lombok.AllArgsConstructor;

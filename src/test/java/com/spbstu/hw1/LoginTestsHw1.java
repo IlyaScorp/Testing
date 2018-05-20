@@ -1,5 +1,7 @@
 package com.spbstu.hw1;
 
+import com.spbstu.utils.TestConfig;
+import org.aeonbits.owner.ConfigFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,33 +15,24 @@ import java.util.List;
 public class LoginTestsHw1 {
 
 
+    String[] TEXT;
     private WebDriver driver;
     private WebElement element;
-
-    final String[] icons = {"practise", "custom", "multi", "base"};
-    final String[] TEXT = {"To include good practices\n" +
-            "and ideas from successful\n" +
-            "EPAM projec",
-            "To be flexible and\n" +
-                    "customizable",
-            "To be multiplatform",
-            "Already have good base\n" +
-                    "(about 20 internal and\n" +
-                    "some external projects),\n" +
-                    "wish to get more…" };
-    String MAINTITLE = "EPAM FRAMEWORK WISHES…";
-    String SECONDTITLE = "LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISICING ELIT, SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA ALIQUA. UT ENIM AD MINIM VENIAM, QUIS NOSTRUD EXERCITATION ULLAMCO LABORIS NISI UT ALIQUIP EX EA COMMODO CONSEQUAT DUIS AUTE IRURE DOLOR IN REPREHENDERIT IN VOLUPTATE VELIT ESSE CILLUM DOLORE EU FUGIAT NULLA PARIATUR.";
+    private TestConfig cfg;
 
     @BeforeSuite
     public void beforeSuite() {
+        cfg = ConfigFactory.create(TestConfig.class);
+        TEXT = cfg.titles();
+        TEXT[3] = TEXT[3].concat(",\n").concat(TEXT[4]);
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.navigate().to("https://jdi-framework.github.io/tests/index.htm");
     }
 
     @Test
-    public void LoginTestsHw1(){
-        Assert.assertEquals(driver.getTitle(),"Index Page");
+    public void LoginTestsHw1() {
+        Assert.assertEquals(driver.getTitle(), "Index Page");
         driver.findElement(By.cssSelector(".profile-photo")).click(); //клик по фото пользователя
         driver.findElement(By.cssSelector("#Login")).sendKeys("epam"); //ввести логин
         driver.findElement(By.cssSelector("#Password")).sendKeys("1234"); //ввести пароль
@@ -47,13 +40,13 @@ public class LoginTestsHw1 {
 
         element = driver.findElement(By.cssSelector(".profile-photo"));
         Assert.assertTrue(element.isDisplayed());
-        Assert.assertEquals(element.getText(),"PITER CHAILOVSKII");
-        Assert.assertEquals(driver.getTitle(),"Index Page");
+        Assert.assertEquals(element.getText(), "PITER CHAILOVSKII");
+        Assert.assertEquals(driver.getTitle(), "Index Page");
 
         WebElement icon;
-        for (int i = 0; i < 4; i++) {                               // проверка иконок
+        for (int i = 0; i < 4; i++) {                                    // проверка иконок
             icon = driver.findElement(By.cssSelector(String.format(".icon-%s",
-                    icons[i])));
+                    cfg.icons()[i])));
             Assert.assertTrue(icon.isDisplayed());
         }
 
@@ -61,20 +54,19 @@ public class LoginTestsHw1 {
         textIcon = driver.findElements(By.cssSelector("div.col-sm-3")); // проверка текста под иконками
         for (int i = 0; i < 4; i++) {
             Assert.assertTrue(textIcon.get(i).isDisplayed());
-            Assert.assertEquals(textIcon.get(i).getText(),TEXT[i]);
+            Assert.assertEquals(TEXT[i], textIcon.get(i).getText());
         }
 
-        element = driver.findElement(By.cssSelector("h3")); // проверка заголовка
+        element = driver.findElement(By.cssSelector("h3"));             // проверка заголовка
         Assert.assertTrue(element.isDisplayed());
-        Assert.assertEquals(element.getText(),MAINTITLE);
+        Assert.assertEquals(element.getText(), cfg.mainTitle());
 
-        element = driver.findElement(By.cssSelector(".main-txt")); // проверка подзаголовка
+        element = driver.findElement(By.cssSelector(".main-txt"));      // проверка подзаголовка
         Assert.assertTrue(element.isDisplayed());
-        Assert.assertEquals(element.getText(),SECONDTITLE);
+        Assert.assertEquals(element.getText(), cfg.secondTitle());
 
         driver.close();
     }
-
 
 
 }
