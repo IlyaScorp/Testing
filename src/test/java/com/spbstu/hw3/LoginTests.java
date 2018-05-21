@@ -13,6 +13,8 @@ import org.testng.annotations.Test;
  */
 
 // TODO this code does not match with code conventions !
+// TODO same situation... Come on, just press ctrl+alt+l
+// TODO update .gitignore !!
 public class LoginTests {
 
     private WebDriver driver;
@@ -26,6 +28,7 @@ public class LoginTests {
             "(about 20 internal and\n" +
             "some external projects),\n" +
             "wish to get more…" };
+    // TODO wrong constant naming, should be divided by '_'
     final String MAINTITLE = "EPAM FRAMEWORK WISHES…";
     final String SECONDTITLE = "LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISICING ELIT, SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA ALIQUA. UT ENIM AD MINIM VENIAM, QUIS NOSTRUD EXERCITATION ULLAMCO LABORIS NISI UT ALIQUIP EX EA COMMODO CONSEQUAT DUIS AUTE IRURE DOLOR IN REPREHENDERIT IN VOLUPTATE VELIT ESSE CILLUM DOLORE EU FUGIAT NULLA PARIATUR.";
 
@@ -34,7 +37,6 @@ public class LoginTests {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         EpamTestSite.init(driver);
-
     }
 
     @Test
@@ -65,6 +67,5 @@ public class LoginTests {
         Assert.assertEquals(tmp.getText(),SECONDTITLE);
 
         EpamTestSite.homePage.closeDriver();
-
     }
 }
