@@ -76,7 +76,7 @@
                 <configuration>
                     <systemPropertyVariables>
                         <webdriver.chrome.driver>
-                            /home/ilya/Documents/ChromeTest/chromedriver
+                            C:/Selenium/chromedriver.exe
                         </webdriver.chrome.driver>
                     </systemPropertyVariables>
                     <suiteXmlFiles>
