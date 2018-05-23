@@ -1,6 +1,7 @@
-/target
-/.idea
-
+target
+.idea
+*.iml
+build
 <<<<<<< HEAD
 # What should I add to this file? There is no any build folder and .iml files
 =======

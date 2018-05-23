@@ -3,16 +3,20 @@ package com.spbstu.hw4;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
-import com.spbstu.enums.ELEMENTS_PAGE;
+import com.spbstu.SeleniumPages.EpamTestSite;
 import com.spbstu.enums.HOME_PAGE;
 import com.spbstu.enums.USER_DATA;
+import com.spbstu.enums.elements_page.COLORS;
+import com.spbstu.enums.elements_page.CONDITIONS;
+import com.spbstu.enums.elements_page.RADIOS;
 import com.spbstu.selenidePages.EpamTestSiteSelenide;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import static com.spbstu.utils.ConfigLoader.config;
 
-import java.util.List;
 
 // TODO poor code convention... i fix it specially for you !
+// TODO thank you
 public class SelenideTest {
 
     @BeforeClass
@@ -20,14 +24,21 @@ public class SelenideTest {
         Configuration.browser = "chrome";
         Configuration.startMaximized = true;
 //        Configuration.headless = true;
+
         EpamTestSiteSelenide.init();
     }
 
 
-    @Test(enabled = true)
+    @Test(enabled = false)
     public void caseOne() {
         // TODO URL should be set in pom.xml or .properties file
-        Selenide.open("https://jdi-framework.github.io/tests/index.htm");
+
+        // TODO ATTENTION!!! How can i set URL in pom file?
+        // TODO I thought I could do it as i set webrdiver,
+        // TODO but webdriver relate to <systemPropertyVariables>, URL doesn't.
+        // TODO I can only specify URL in <profile> and add test.url=${test.url} to data.properties
+
+        Selenide.open(config().name());
         EpamTestSiteSelenide.homePage.login(USER_DATA.LOGIN.toString(), USER_DATA.PASSWORD.toString());
         EpamTestSiteSelenide.homePage.checkUserLogIn(USER_DATA.USER_NAME.toString());
         EpamTestSiteSelenide.homePage.isPictureExist();
@@ -36,7 +47,7 @@ public class SelenideTest {
         EpamTestSiteSelenide.homePage.isSecondTitleExist();
         EpamTestSiteSelenide.homePage.clickAndCheckHeaderService(HOME_PAGE.SERVICE.getArrValue());
         EpamTestSiteSelenide.homePage.clickAndCheckMenuService(HOME_PAGE.SERVICE.getArrValue());
-//        EpamTestSiteSelenide.homePage.openDifferentElementsPage();
+        EpamTestSiteSelenide.homePage.openDifferentElementsPage();
         /*
          * Attention! Попробуйте НЕ закооментировать метод openDifferentElementsPage и
          * провестести следующие два тест: elementsPage.isCheckboxesExist
@@ -47,27 +58,30 @@ public class SelenideTest {
          * */
         // TODO of course!! It is completely essential to check the collection SIZE before .forEach cycle.
         // TODO otherwise, in case if you have no elements, .forEach will not execute at all...
-        EpamTestSiteSelenide.elementsPage.isCheckboxesExist((List<String>) ELEMENTS_PAGE.CHECK_BOXES.getValue());
-        EpamTestSiteSelenide.elementsPage.isRadiosExist((List<String>) ELEMENTS_PAGE.RADIOS.getValue());
-        EpamTestSiteSelenide.elementsPage.isDropdownExist((List<String>) ELEMENTS_PAGE.COLORS_DROPDOWN.getValue());
+        EpamTestSiteSelenide.elementsPage.isCheckboxesExist(CONDITIONS.values());
+        EpamTestSiteSelenide.elementsPage.isRadiosExist(RADIOS.values());
+        EpamTestSiteSelenide.elementsPage.isDropdownExist(COLORS.values());
         EpamTestSiteSelenide.elementsPage.isButtonsAndSectionsExist();
         // TODO it will be better if you create emup for this purpose
-        EpamTestSiteSelenide.elementsPage.switchConditions("Water");
-        EpamTestSiteSelenide.elementsPage.switchConditions("Wind");
-        EpamTestSiteSelenide.elementsPage.setMetal("Selen");
-        EpamTestSiteSelenide.elementsPage.setColor("Yellow");
-        EpamTestSiteSelenide.elementsPage.switchConditions("Water");
-        EpamTestSiteSelenide.elementsPage.switchConditions("Wind");
+        EpamTestSiteSelenide.elementsPage.switchConditions(CONDITIONS.WATER.getValue());
+        EpamTestSiteSelenide.elementsPage.switchConditions(CONDITIONS.WIND.getValue());
+        EpamTestSiteSelenide.elementsPage.setMetal(RADIOS.SELEN.getValue());
+        EpamTestSiteSelenide.elementsPage.setColor(COLORS.YELLOW.getValue());
+        EpamTestSiteSelenide.elementsPage.switchConditions(CONDITIONS.WATER.getValue());
+        EpamTestSiteSelenide.elementsPage.switchConditions(CONDITIONS.WIND.getValue());
         EpamTestSiteSelenide.elementsPage.checkLogs();
     }
 
-    @Test(enabled = false)
-    public void caseTwo() {
+    @Test(enabled = true)
+    public void caseTwo() throws InterruptedException {
         Selenide.open("https://jdi-framework.github.io/tests/index.htm");
         EpamTestSiteSelenide.homePage.login(USER_DATA.LOGIN.toString(), USER_DATA.PASSWORD.toString());
         EpamTestSiteSelenide.homePage.checkUserLogIn(USER_DATA.USER_NAME.toString());
         EpamTestSiteSelenide.elementsPage.openDatesPage();
-        EpamTestSiteSelenide.dates.shiftSlider();
+        // TODO Test doesn't work. Peek inside method and pay attention on comments
+        EpamTestSiteSelenide.dates.shiftSlider(0,100);
+//        EpamTestSiteSelenide.dates.checkLogs();
+//        EpamTestSiteSelenide.dates.shiftSlider(0,0);
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {

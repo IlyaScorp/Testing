@@ -2,6 +2,9 @@ package com.spbstu.selenidePages.pages;
 
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
+import com.spbstu.enums.elements_page.COLORS;
+import com.spbstu.enums.elements_page.CONDITIONS;
+import com.spbstu.enums.elements_page.RADIOS;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.*;
@@ -47,25 +50,25 @@ public class DifferentElementsPage {
         currentRadios.put("Earth", false);
     }
 
-    public void isCheckboxesExist(List<String> nameBoxes) {
-        Iterator<String> boxIterator = nameBoxes.iterator();
+    public void isCheckboxesExist(CONDITIONS[] cond) {
+        Iterator<CONDITIONS> boxIterator = Arrays.asList(cond).iterator();
         labelCheckboxes.forEach(e -> {
             e.should(exist);
-            e.shouldHave(text(boxIterator.next()));
+            e.shouldHave(text(boxIterator.next().getValue()));
         });
     }
 
-    public void isRadiosExist(List<String> nameRadios) {
-        Iterator<String> radiosIterator = nameRadios.iterator();
+    public void isRadiosExist(RADIOS[] radios) {
+        Iterator<RADIOS> radiosIterator = Arrays.asList(radios).iterator();
         labelRadios.forEach(e -> {
             e.should(exist);
-            e.shouldHave(text(radiosIterator.next()));
+            e.shouldHave(text(radiosIterator.next().getValue()));
         });
     }
 
-    public void isDropdownExist(List<String> colorsList) {
-        Iterator<String> colorsIterator = colorsList.iterator();
-        colorsDropdown.forEach(e -> e.shouldHave(text(colorsIterator.next())));
+    public void isDropdownExist(COLORS[] colors) {
+        Iterator<COLORS> colorsIterator = Arrays.asList(colors).iterator();
+        colorsDropdown.forEach(e -> e.shouldHave(text(colorsIterator.next().getValue())));
     }
 
     public void isButtonsAndSectionsExist() {
