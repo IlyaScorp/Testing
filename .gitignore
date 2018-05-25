@@ -2,8 +2,4 @@ target
 .idea
 *.iml
 build
-<<<<<<< HEAD
-# What should I add to this file? There is no any build folder and .iml files
-=======
-# TODO update this file, some statements missed...
->>>>>>> 40ae8d8ea0b1c5fa70e11644f6c78cf07e44432c
+debug.log
