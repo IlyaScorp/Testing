@@ -78,6 +78,9 @@ public class Dates {
 
         System.out.println(sliderRange.getSize().width);
 
+        // TODO easiest way:         This test should work on certain screen resolution, set it up and dont worry
+        // TODO a bit difficult way: Try javascript, find out documentation on this slider, this is common angular element
+
         Thread.sleep(1000);
 //        if (leftPosition < getPosition(sliders.get(1))) {
 //            shiftSlider.dragAndDropBy(sliders.get(0),
