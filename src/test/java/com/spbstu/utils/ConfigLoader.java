@@ -7,7 +7,7 @@ public class ConfigLoader {
     private static TestConfig config;
 
     public static TestConfig config() {
-        if (config != null) {
+        if (config == null) {
 
             config = ConfigFactory.create(TestConfig.class);
         }

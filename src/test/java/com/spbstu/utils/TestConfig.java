@@ -5,10 +5,10 @@ import org.aeonbits.owner.Config;
 import static org.aeonbits.owner.Config.Sources;
 
 @Sources({
-        "classpath:test.properties"
+        "classpath:data.properties"
 })
 public interface TestConfig extends Config {
 
     @Key("test.url")
-    String name();
+    String url();
 }
