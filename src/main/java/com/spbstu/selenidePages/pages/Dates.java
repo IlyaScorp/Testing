@@ -72,6 +72,7 @@ public class Dates {
         }
         //TODO if we change the position from 100 or 0 the incorrect value can be written at the log window,
         //TODO so, Im checking the span tag of sliders
+        //TODO js глянул, повозился часик, не вышло. Эта поправка в 0.8 отвратительна, но пока только так.
         sliders.get(0).shouldHave(text(Integer.toString(leftPosition)));
         sliders.get(1).shouldHave(text(Integer.toString(rightPosition)));
     }
