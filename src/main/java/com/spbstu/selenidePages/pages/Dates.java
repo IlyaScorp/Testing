@@ -11,6 +11,7 @@ import static com.codeborne.selenide.Condition.text;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 
 public class Dates {
@@ -52,7 +53,7 @@ public class Dates {
         }
 
         Actions shiftSlider = new Actions(WebDriverRunner.getWebDriver());
-        Thread.sleep(2000);
+        Thread.sleep(2000); // TODO it will be better with TimeUnit.SECONDS.sleep(2);
         if (leftPosition < getPosition(sliders.get(1))) {
             shiftSlider.dragAndDropBy(sliders.get(0),
                     (int) ((leftPosition - getPosition(sliders.get(0)) - 0.8f) / 100. * WIDTH), 0).perform();
