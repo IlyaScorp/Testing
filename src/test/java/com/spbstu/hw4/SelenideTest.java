@@ -27,7 +27,7 @@ public class SelenideTest {
     }
 
 
-    @Test(enabled = false)
+    @Test(enabled = true)
     public void caseOne() {
 
         Selenide.open(config().url());

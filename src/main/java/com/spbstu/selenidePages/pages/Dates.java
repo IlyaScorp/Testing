@@ -9,8 +9,8 @@ import org.openqa.selenium.support.FindBy;
 
 import static com.codeborne.selenide.Condition.text;
 
-import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 
 public class Dates {
@@ -22,10 +22,8 @@ public class Dates {
     SelenideElement sliderRange;
 
     @FindBy(css = ".logs li")
-    List<SelenideElement> webLogs;
 
     private boolean isSliderActive = false;
-    private List<String> logs = new LinkedList<>();
     private float WIDTH;
 
     public Dates() {
@@ -37,7 +35,8 @@ public class Dates {
     }
 
 
-    public void shiftSlider(int leftPosition, int rightPosition) throws InterruptedException {
+    public void
+    shiftSlider(int leftPosition, int rightPosition) throws InterruptedException {
         if (!isSliderActive) {
             sliders.get(0).scrollTo();
             sliders.get(1).scrollTo();
@@ -52,27 +51,25 @@ public class Dates {
         }
 
         Actions shiftSlider = new Actions(WebDriverRunner.getWebDriver());
-        Thread.sleep(2000);
+        TimeUnit.SECONDS.sleep(1);
         if (leftPosition < getPosition(sliders.get(1))) {
             shiftSlider.dragAndDropBy(sliders.get(0),
                     (int) ((leftPosition - getPosition(sliders.get(0)) - 0.8f) / 100. * WIDTH), 0).perform();
 
-            Thread.sleep(2000);
-
+            TimeUnit.SECONDS.sleep(1);
             shiftSlider.dragAndDropBy(sliders.get(1),
                     (int) ((rightPosition - getPosition(sliders.get(1)) - 0.8f) / 100. * WIDTH), 0).perform();
 
         } else {
             shiftSlider.dragAndDropBy(sliders.get(1),
                     (int) ((rightPosition - getPosition(sliders.get(1)) - 0.8f) / 100. * WIDTH), 0).perform();
-            Thread.sleep(2000);
+
+            TimeUnit.SECONDS.sleep(1);
             shiftSlider.dragAndDropBy(sliders.get(0),
                     (int) ((leftPosition - getPosition(sliders.get(0)) - 0.8f) / 100. * WIDTH), 0).perform();
 
         }
-        //TODO if we change the position from 100 or 0 the incorrect value can be written at the log window,
-        //TODO so, Im checking the span tag of sliders
-        //TODO js глянул, повозился часик, не вышло. Эта поправка в 0.8 отвратительна, но пока только так.
+
         sliders.get(0).shouldHave(text(Integer.toString(leftPosition)));
         sliders.get(1).shouldHave(text(Integer.toString(rightPosition)));
     }
