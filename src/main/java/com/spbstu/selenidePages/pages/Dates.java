@@ -6,6 +6,7 @@ import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import ru.yandex.qatools.allure.annotations.Step;
 
 import static com.codeborne.selenide.Condition.text;
 
@@ -34,9 +35,8 @@ public class Dates {
         return Integer.parseInt(element.getText());
     }
 
-
-    public void
-    shiftSlider(int leftPosition, int rightPosition) throws InterruptedException {
+    @Step("Set up the specified value of slider")
+    public void shiftSlider(int leftPosition, int rightPosition) throws InterruptedException {
         if (!isSliderActive) {
             sliders.get(0).scrollTo();
             sliders.get(1).scrollTo();

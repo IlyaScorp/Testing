@@ -6,6 +6,7 @@ import com.spbstu.enums.elements_page.COLORS;
 import com.spbstu.enums.elements_page.CONDITIONS;
 import com.spbstu.enums.elements_page.RADIOS;
 import org.openqa.selenium.support.FindBy;
+import ru.yandex.qatools.allure.annotations.Step;
 
 import java.util.*;
 
@@ -50,6 +51,7 @@ public class DifferentElementsPage {
         currentRadios.put("Earth", false);
     }
 
+    @Step("Are there checkboxes")
     public void isCheckboxesExist(CONDITIONS[] cond) {
         Iterator<CONDITIONS> boxIterator = Arrays.asList(cond).iterator();
         labelCheckboxes.forEach(e -> {
@@ -58,6 +60,7 @@ public class DifferentElementsPage {
         });
     }
 
+    @Step("Are there radio buttons")
     public void isRadiosExist(RADIOS[] radios) {
         Iterator<RADIOS> radiosIterator = Arrays.asList(radios).iterator();
         labelRadios.forEach(e -> {
@@ -66,11 +69,13 @@ public class DifferentElementsPage {
         });
     }
 
+    @Step("Are there dropdown list")
     public void isDropdownExist(COLORS[] colors) {
         Iterator<COLORS> colorsIterator = Arrays.asList(colors).iterator();
         colorsDropdown.forEach(e -> e.shouldHave(text(colorsIterator.next().getValue())));
     }
 
+    @Step("Are there buttons and log section")
     public void isButtonsAndSectionsExist() {
         colorButtons.forEach(e -> {
             e.should(exist);
@@ -83,19 +88,21 @@ public class DifferentElementsPage {
 
     }
 
-
+    @Step("Put specified/certain color")
     public void setColor(String color) {
         colorsDropdown.stream().filter(e -> e.is(text(color)))
                 .forEach(SelenideElement::click);
         logs.add(String.format("Colors: value changed to %s", color));
     }
 
+    @Step("Put specified/certain metal")
     public void setMetal(String metal) {
         labelRadios.stream().filter(e -> e.is(text(metal)))
                 .forEach(SelenideElement::click);
         logs.add(String.format("metal: value changed to %s", metal));
     }
 
+    @Step("Put specified/certain conditions")
     public void switchConditions(String cond) {
         labelCheckboxes.stream().filter(e -> e.is(text(cond)))
                 .forEach(SelenideElement::click);
@@ -110,6 +117,7 @@ public class DifferentElementsPage {
         }
     }
 
+    @Step("Is log list correct")
     public void checkLogs() {
         int length = webLogs.size();
         for (int i = 0; i < length; i++) {
@@ -117,6 +125,7 @@ public class DifferentElementsPage {
         }
     }
 
+    @Step("Open Dates page")
     public void openDatesPage() {
         serviceHeaderButton.click();
         datesPage.click();

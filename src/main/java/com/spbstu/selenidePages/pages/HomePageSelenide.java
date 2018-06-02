@@ -3,6 +3,8 @@ package com.spbstu.selenidePages.pages;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.support.FindBy;
+import org.testng.annotations.Test;
+import ru.yandex.qatools.allure.annotations.Step;
 
 import java.util.Arrays;
 import java.util.List;
@@ -14,6 +16,7 @@ public class HomePageSelenide {
 
     @FindBy(css = ".profile-photo")
     SelenideElement profilePhoto;
+
 
     @FindBy(css = "#Login")
     SelenideElement loginField;
@@ -55,11 +58,12 @@ public class HomePageSelenide {
         Selenide.page(this);
     }
 
-
+    @Step("Open site")
     public void open() {
         Selenide.open("https://jdi-framework.github.io/tests/index.htm");
     }
 
+    @Step("Try to sign up")
     public void login(String login, String password) {
         profilePhoto.click();
         loginField.sendKeys(login);
@@ -67,26 +71,30 @@ public class HomePageSelenide {
         submit.click();
     }
 
+    @Step("Verify user has logged, hasn't he:)")
     public void checkUserLogIn(String userName) {
         profilePhoto.shouldHave(exactText(userName));
     }
 
+    @Step("Are there pictures on main page")
     public void isPictureExist() {
         pictures.stream().skip(2).forEachOrdered(a -> a.should(exist));
     }
 
-    public void isTextUnderPictureExist() {
-        textUnderPictures.forEach(a -> a.should(exist));
-    }
+    @Step("Are there pictures under text on main page")
+    public void isTextUnderPictureExist() { textUnderPictures.forEach(a -> a.should(exist)); }
 
+    @Step("Is there main title")
     public void isMainTitleExist() {
         mainTitle.should(exist);
     }
 
+    @Step("Is there second title")
     public void isSecondTitleExist() {
         secondTitle.should(exist);
     }
 
+    @Step("Verify workability of the header menu")
     public void clickAndCheckHeaderService(String[] menu) {
         if (serviceHeaderMenu.is(hidden)) {
             serviceHeaderButton.click();
@@ -102,6 +110,7 @@ public class HomePageSelenide {
         */
     }
 
+    @Step("Verify left menu workability")
     public void clickAndCheckMenuService(String[] menu) {
         if (serviceLeftMenu.is(hidden)) {
             serviceLeftButton.click();
@@ -110,7 +119,7 @@ public class HomePageSelenide {
         Arrays.stream(menu).forEach(e -> serviceLeftMenu.shouldHave(text(e)));
     }
 
-
+    @Step("Open Different elements page")
     public void openDifferentElementsPage() {
         serviceHeaderButton.click();
         openDifferentElementsPage.click();

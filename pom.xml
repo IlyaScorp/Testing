@@ -13,6 +13,7 @@
     <properties>
         <testng.version>6.10</testng.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <aspectj.version>1.8.5</aspectj.version>
     </properties>
 
     <build>
@@ -83,6 +84,32 @@
                     <suiteXmlFiles>
                         <suiteXmlFiles>src/test/resources/runners/${test.runner}</suiteXmlFiles>
                     </suiteXmlFiles>
+                    <testFailureIgnore>true</testFailureIgnore>
+                    <argLine>
+                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+                    </argLine>
+                </configuration>
+            </plugin>
+            <!--<plugin>-->
+                <!--<groupId>ru.yandex.qatools.allure</groupId>-->
+                <!--<artifactId>allure-maven-plugin</artifactId>-->
+                <!--<version>2.5</version>-->
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<goals>-->
+                            <!--<goal>report</goal>-->
+                            <!--&lt;!&ndash;<goal>serve</goal>&ndash;&gt;-->
+                        <!--</goals>-->
+                        <!--<phase>post-integration-test</phase>-->
+                    <!--</execution>-->
+                <!--</executions>-->
+            <!--</plugin>-->
+            <plugin>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-maven</artifactId>
+                <version>2.9</version>
+                <configuration>
+                    <reportVersion>2.4.1</reportVersion>
                 </configuration>
             </plugin>
         </plugins>
@@ -116,7 +143,9 @@
                 <test.runner>hw4_2.xml</test.runner>
             </properties>
         </profile>
+        
     </profiles>
+
 
 
     <dependencies>
@@ -145,5 +174,25 @@
             <artifactId>selenide</artifactId>
             <version>4.10.01</version>
         </dependency>
+        <dependency>
+            <groupId>ru.yandex.qatools.allure</groupId>
+            <artifactId>allure-testng-adaptor</artifactId>
+            <version>LATEST</version>
+        </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>1.8.5</version>
+        </dependency>
     </dependencies>
+    <!--<reporting>-->
+        <!--<excludeDefaults>true</excludeDefaults>-->
+        <!--<plugins>-->
+            <!--<plugin>-->
+                <!--<groupId>ru.yandex.qatools.allure</groupId>-->
+                <!--<artifactId>allure-maven-plugin</artifactId>-->
+                <!--<version>LATEST</version>-->
+            <!--</plugin>-->
+        <!--</plugins>-->
+    <!--</reporting>-->
 </project>
