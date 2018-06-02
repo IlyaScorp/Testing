@@ -1,16 +1,14 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="SPBSTU ts" verbose="1">
-    <test name="Se">
-
-        <!--<classes>-->
-            <!--<class name="com.spbstu.hw4.SelenideTest">-->
-                <!--<methods>-->
-                    <!--<include name="caseOne"/>-->
-                    <!--&lt;!&ndash;<include name="caseTwo"/>&ndash;&gt;-->
-                <!--</methods>-->
-            <!--</class>-->
-        <!--</classes>-->
+<suite name="HOMEWORK_4" verbose="1">
+    <test name="caseOne">
+        <classes>
+            <class name="com.spbstu.hw4.SelenideTest">
+                <methods>
+                    <include name="caseOne"/>
+                </methods>
+            </class>
+        </classes>
     </test>
 </suite>
 
