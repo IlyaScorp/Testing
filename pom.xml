@@ -79,7 +79,7 @@
                         <webdriver.chrome.driver>
                             /home/ilya/Documents/ChromeTest/chromedriver
                         </webdriver.chrome.driver>
-                        <selenide.browser>utils.CustomWebDriverProvider</selenide.browser>
+<!--                         <selenide.browser>utils.CustomWebDriverProvider</selenide.browser> -->
                     </systemPropertyVariables>
                     <suiteXmlFiles>
                         <suiteXmlFile>src/test/resources/runners/${test.runner}</suiteXmlFile>
