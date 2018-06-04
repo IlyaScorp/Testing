@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default Suite" duration-ms="8855" started-at="2018-06-04T17:19:58Z" finished-at="2018-06-04T17:20:07Z">
+    <groups>
+    </groups>
+    <test name="EpamHomeWork3TestNG" duration-ms="8855" started-at="2018-06-04T17:19:58Z" finished-at="2018-06-04T17:20:07Z">
+      <class name="MySelenideTest">
+        <test-method status="PASS" signature="BeforeTestSelenide()[pri:0, instance:MySelenideTest@32f308c6]" name="BeforeTestSelenide" is-config="true" duration-ms="15963" started-at="2018-06-04T20:19:42Z" finished-at="2018-06-04T20:19:58Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- BeforeTestSelenide -->
+        <test-method status="PASS" signature="Case1()[pri:0, instance:MySelenideTest@32f308c6]" name="Case1" duration-ms="7785" started-at="2018-06-04T20:19:58Z" finished-at="2018-06-04T20:20:06Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Case1 -->
+      </class> <!-- MySelenideTest -->
+    </test> <!-- EpamHomeWork3TestNG -->
+  </suite> <!-- Default Suite -->
+</testng-results>

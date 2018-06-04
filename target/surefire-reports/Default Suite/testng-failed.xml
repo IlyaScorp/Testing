@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite verbose="0" name="Failed suite [Default Suite]">
+  <test name="EpamHomeWork3TestNG(failed)">
+    <classes>
+      <class name="MySelenideTest">
+        <methods>
+          <include name="BeforeTestSelenide"/>
+          <include name="Case1"/>
+        </methods>
+      </class> <!-- MySelenideTest -->
+    </classes>
+  </test> <!-- EpamHomeWork3TestNG(failed) -->
+</suite> <!-- Failed suite [Default Suite] -->

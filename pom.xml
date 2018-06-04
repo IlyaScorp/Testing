@@ -77,7 +77,7 @@
                 <configuration>
                     <systemPropertyVariables>
                         <webdriver.chrome.driver>
-                            C:\\Users\\Светлана\\IdeaProjects\\EpamHomeWork3\\drivers\\chromedriver.exe
+                            /home/ilya/Documents/ChromeTest/chromedriver
                         </webdriver.chrome.driver>
                         <selenide.browser>utils.CustomWebDriverProvider</selenide.browser>
                     </systemPropertyVariables>
