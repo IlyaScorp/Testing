@@ -4,7 +4,7 @@ import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import com.spbstu.enums.elements_page.COLORS;
 import com.spbstu.enums.elements_page.CONDITIONS;
-import com.spbstu.enums.elements_page.RADIOS;
+import com.spbstu.enums.elements_page.METAL;
 import org.openqa.selenium.support.FindBy;
 import ru.yandex.qatools.allure.annotations.Step;
 
@@ -56,23 +56,23 @@ public class DifferentElementsPage {
         Iterator<CONDITIONS> boxIterator = Arrays.asList(cond).iterator();
         labelCheckboxes.forEach(e -> {
             e.should(exist);
-            e.shouldHave(text(boxIterator.next().getValue()));
+            e.shouldHave(text(boxIterator.next().name()));
         });
     }
 
     @Step("Are there radio buttons")
-    public void isRadiosExist(RADIOS[] radios) {
-        Iterator<RADIOS> radiosIterator = Arrays.asList(radios).iterator();
+    public void isRadiosExist(METAL[] radios) {
+        Iterator<METAL> radiosIterator = Arrays.asList(radios).iterator();
         labelRadios.forEach(e -> {
             e.should(exist);
-            e.shouldHave(text(radiosIterator.next().getValue()));
+            e.shouldHave(text(radiosIterator.next().name()));
         });
     }
 
     @Step("Are there dropdown list")
     public void isDropdownExist(COLORS[] colors) {
         Iterator<COLORS> colorsIterator = Arrays.asList(colors).iterator();
-        colorsDropdown.forEach(e -> e.shouldHave(text(colorsIterator.next().getValue())));
+        colorsDropdown.forEach(e -> e.shouldHave(text(colorsIterator.next().name())));
     }
 
     @Step("Are there buttons and log section")

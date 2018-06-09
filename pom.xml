@@ -14,6 +14,7 @@
         <testng.version>6.10</testng.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <aspectj.version>1.8.5</aspectj.version>
+        <driver>chrome</driver>
     </properties>
 
     <build>
@@ -143,6 +144,12 @@
                 <test.runner>hw4_2.xml</test.runner>
             </properties>
         </profile>
+        <profile>
+            <id>homework8</id>
+            <properties>
+                <test.runner>hw8.xml</test.runner>
+            </properties>
+        </profile>
         
     </profiles>
 
@@ -183,6 +190,11 @@
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>
             <version>1.8.5</version>
+        </dependency>
+        <dependency>
+            <groupId>com.epam.jdi</groupId>
+            <artifactId>jdi-uitest-web</artifactId>
+            <version>LATEST</version>
         </dependency>
     </dependencies>
     <!--<reporting>-->

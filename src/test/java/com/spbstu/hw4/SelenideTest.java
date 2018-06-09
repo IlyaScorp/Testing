@@ -6,7 +6,7 @@ import com.spbstu.enums.HOME_PAGE;
 import com.spbstu.enums.USER_DATA;
 import com.spbstu.enums.elements_page.COLORS;
 import com.spbstu.enums.elements_page.CONDITIONS;
-import com.spbstu.enums.elements_page.RADIOS;
+import com.spbstu.enums.elements_page.METAL;
 import com.spbstu.selenidePages.EpamTestSiteSelenide;
 import com.spbstu.utils.AllureAttachmentListener;
 import org.testng.annotations.BeforeClass;
@@ -27,9 +27,9 @@ public class SelenideTest {
     @BeforeClass
     public void beforeClass() {
         Configuration.browser = "chrome";
-        Configuration.startMaximized = true;
+//        Configuration.startMaximized = true;
 //        Configuration.headless = true;
-//        Configuration.browserSize = "1200x700";
+        Configuration.browserSize = "780x700";
 
         EpamTestSiteSelenide.init();
     }
@@ -51,15 +51,15 @@ public class SelenideTest {
         EpamTestSiteSelenide.homePage.clickAndCheckMenuService(HOME_PAGE.SERVICE.getArrValue());
         EpamTestSiteSelenide.homePage.openDifferentElementsPage();
         EpamTestSiteSelenide.elementsPage.isCheckboxesExist(CONDITIONS.values());
-        EpamTestSiteSelenide.elementsPage.isRadiosExist(RADIOS.values());
+        EpamTestSiteSelenide.elementsPage.isRadiosExist(METAL.values());
         EpamTestSiteSelenide.elementsPage.isDropdownExist(COLORS.values());
         EpamTestSiteSelenide.elementsPage.isButtonsAndSectionsExist();
-        EpamTestSiteSelenide.elementsPage.switchConditions(CONDITIONS.WATER.getValue());
-        EpamTestSiteSelenide.elementsPage.switchConditions(CONDITIONS.WIND.getValue());
-        EpamTestSiteSelenide.elementsPage.setMetal(RADIOS.SELEN.getValue());
-        EpamTestSiteSelenide.elementsPage.setColor(COLORS.YELLOW.getValue());
-        EpamTestSiteSelenide.elementsPage.switchConditions(CONDITIONS.WATER.getValue());
-        EpamTestSiteSelenide.elementsPage.switchConditions(CONDITIONS.WIND.getValue());
+        EpamTestSiteSelenide.elementsPage.switchConditions(CONDITIONS.Water.name());
+        EpamTestSiteSelenide.elementsPage.switchConditions(CONDITIONS.Wind.name());
+        EpamTestSiteSelenide.elementsPage.setMetal(METAL.Selen.name());
+        EpamTestSiteSelenide.elementsPage.setColor(COLORS.Yellow.name());
+        EpamTestSiteSelenide.elementsPage.switchConditions(CONDITIONS.Water.name());
+        EpamTestSiteSelenide.elementsPage.switchConditions(CONDITIONS.Wind.name());
         EpamTestSiteSelenide.elementsPage.checkLogs();
         Selenide.close();
     }

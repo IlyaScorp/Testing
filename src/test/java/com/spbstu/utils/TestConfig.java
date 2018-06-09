@@ -5,10 +5,13 @@ import org.aeonbits.owner.Config;
 import static org.aeonbits.owner.Config.Sources;
 
 @Sources({
-        "classpath:data.properties"
+        "classpath:test.properties"
 })
 public interface TestConfig extends Config {
 
     @Key("test.url")
     String url();
+
+    @Key("webdriver.chrome.driver")
+    String pathToDriver();
 }

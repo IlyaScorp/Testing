@@ -12,6 +12,8 @@ public enum HOME_PAGE {
      * 2) Много ли занимают места лишни переменные(в этом енаме их 3)?
      * Или лучше сделать один Object и потом приводить к нужному классу?
      * */
+
+    METALS_COLORS("METALS & COLORS"),
     MAIN_TITLE("EPAM FRAMEWORK WISHES…"),
     SECOND_TITLE("LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISICING ELIT,"
             + " SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA ALIQUA."
