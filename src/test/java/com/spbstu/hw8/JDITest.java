@@ -2,7 +2,7 @@ package com.spbstu.hw8;
 
 import com.epam.web.matcher.testng.Check;
 import com.spbstu.JDIPages.JDISite;
-import com.spbstu.JDIPages.entities.Data;
+import com.spbstu.JDIPages.entities.MetalsColorsData;
 import com.spbstu.enums.HOME_PAGE;
 import com.spbstu.enums.USER_DATA;
 
@@ -10,8 +10,6 @@ import static com.spbstu.utils.ResourceLoader.*;
 
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
-import java.util.Arrays;
 
 import static com.spbstu.JDIPages.JDISite.*;
 
@@ -28,7 +26,7 @@ public class JDITest extends JDITestInit {
         };
     }
 
-    @Test
+    @Test(enabled = true)
     public static void entryTest() {
         homePage.open();
         homePage.login();
@@ -51,18 +49,8 @@ public class JDITest extends JDITestInit {
     //TODO Оно и понятно, сделать идеально рабочую библиотеку довольно сложно при наличии разнообразной вёрстки.
 
     @Test(dataProvider = "data")
-    public static void test(Data data) {
-        metalAndColors.summary.boxFirst.select(Integer.toString(data.getSummary()[0]));
-        metalAndColors.summary.boxLast.select(Integer.toString(data.getSummary()[1]));
-        metalAndColors.elementsList.uncheckAll();
-        metalAndColors.elementsList.check(data.getElements());
-        metalAndColors.colorsDropDown.select(data.getColor());
-        metalAndColors.metalDropDown.select(data.getMetals());
-        metalAndColors.ovoshiList.expand();
-        metalAndColors.ovoshiList.uncheckAll();
-        metalAndColors.ovoshiList.select(data.getVegetables());
-        metalAndColors.getRsultsButton.click();
-        Arrays.stream(metalAndColors.results.getLines()).forEach(System.out::print);
-        metalAndColors.checkResults(data);
+    public static void test(MetalsColorsData metalsColorsData) {
+        metalAndColors.submitForm(metalsColorsData);
+        metalAndColors.checkResults(metalsColorsData);
     }
 }

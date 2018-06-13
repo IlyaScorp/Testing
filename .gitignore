@@ -1,3 +1,5 @@
+.allure
+.logs
 target
 .idea
 *.iml

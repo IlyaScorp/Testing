@@ -8,8 +8,10 @@ import com.spbstu.JDIPages.entities.User;
 import org.openqa.selenium.support.FindBy;
 
 public class LoginForm extends Form<User> {
+
     @FindBy(id = "Login")
     public TextField name;
+
     @FindBy(id = "Password")
     public TextField password;
 

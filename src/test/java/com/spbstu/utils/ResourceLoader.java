@@ -3,7 +3,7 @@ package com.spbstu.utils;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
-import com.spbstu.JDIPages.entities.Data;
+import com.spbstu.JDIPages.entities.MetalsColorsData;
 import com.spbstu.selenidePages.users.User;
 import lombok.SneakyThrows;
 
@@ -15,7 +15,7 @@ import java.util.Map;
 public class ResourceLoader {
 
     private static Map<String, User> USERS;
-    private static Map<String, Data> DATA;
+    private static Map<String, MetalsColorsData> DATA;
 
     static {
         load();
@@ -32,11 +32,11 @@ public class ResourceLoader {
 
         USERS = new Gson().fromJson(jsonReader, type);
 
-//        Load Data
+//        Load MetalsColorsData
         FileReader fileReaderData = new FileReader(ResourceLoader.class.getClassLoader().getResource("data/metalColor.json").getFile());
         JsonReader jsonReaderData = new JsonReader(fileReaderData);
 
-        Type typeData = new TypeToken<Map<String, Data>>() {
+        Type typeData = new TypeToken<Map<String, MetalsColorsData>>() {
         }.getType();
 
         DATA = new Gson().fromJson(jsonReaderData, typeData);
@@ -47,7 +47,7 @@ public class ResourceLoader {
         return USERS.get(userId);
     }
 
-    public static Data getData(String dataId) {
+    public static MetalsColorsData getData(String dataId) {
         return DATA.get(dataId);
     }
 }
